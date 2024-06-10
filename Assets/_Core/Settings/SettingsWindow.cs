@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,11 @@ public class SettingsWindow : Element
     [SerializeField] private VirtualButton acceptButton;
     [SerializeField] private VirtualToggle soundsToggle;
     [SerializeField] private VirtualToggle musicToggle;
+    [SerializeField] private AnimationUI animationUI;
 
     private void Start()
     {
-        Deactivate();
+        animationUI.PreviewToStart();
     }
     
     public void Init()
@@ -24,7 +26,7 @@ public class SettingsWindow : Element
         acceptButton.AddListener(() =>
         {
             AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
-            Deactivate();
+            animationUI.PlayOut(); 
         });
 
         soundsToggle.AddToggleListener(() =>
@@ -39,6 +41,6 @@ public class SettingsWindow : Element
             AudioManager.instance.MuteMusic();
         });
 
-        Activate();
+        animationUI.PlayIn();
     }
 }
