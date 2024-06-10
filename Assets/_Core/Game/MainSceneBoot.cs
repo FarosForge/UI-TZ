@@ -12,11 +12,13 @@ public class MainSceneBoot : MonoBehaviour
     {
         restartButton.AddListener(() =>
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
             SceneLoader.LoadScene(GameScenes.Main);
         });
 
         settingsButton.AddListener(() =>
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
             settingsWindow.Init();
         });
     }

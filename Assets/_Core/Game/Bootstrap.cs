@@ -8,9 +8,11 @@ public class Bootstrap : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlayMusic();
+
         nextButton.AddListener(() =>
         {
-            Debug.Log("Click");
+            AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
             SceneLoader.LoadScene(GameScenes.Main);
         });
     }

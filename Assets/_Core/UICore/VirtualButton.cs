@@ -1,7 +1,4 @@
 using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -80,11 +77,5 @@ public class VirtualButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         OnClick.RemoveAllListeners();
 
         OnClick.AddListener(action);
-    }
-
-    public void Reset()
-    {
-        _image.sprite = config.DefaultImage;
-        transform.localScale = new Vector3(_scale, _scale, _scale);
     }
 }

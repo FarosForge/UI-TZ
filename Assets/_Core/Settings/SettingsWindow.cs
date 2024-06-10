@@ -10,19 +10,25 @@ public class SettingsWindow : Element
 
     private void Start()
     {
+        soundsToggle.Init();
+        musicToggle.Init();
+
         acceptButton.AddListener(() =>
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
             Deactivate();
         });
 
         soundsToggle.AddToggleListener(() =>
         {
-
+            AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
+            AudioManager.instance.MuteSounds();
         });
 
         musicToggle.AddToggleListener(() =>
         {
-
+            AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
+            AudioManager.instance.MuteMusic();
         });
 
         Deactivate();

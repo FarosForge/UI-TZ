@@ -8,7 +8,7 @@ public class VirtualToggle : VirtualButton
     [SerializeField] private GameObject toggleObj;
     [SerializeField] private UnityEvent OnToggleClick;
 
-    private void Start()
+    public void Init()
     {
         OnToggleClick = new UnityEvent();
 
