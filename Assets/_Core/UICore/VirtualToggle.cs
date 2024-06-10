@@ -14,7 +14,7 @@ public class VirtualToggle : VirtualButton
 
         AddListener(() =>
         {
-            toggleObj.SetActive(!toggleObj.activeSelf);
+            SetToggleState(!toggleObj.activeSelf);
             OnToggleClick?.Invoke();
         });
     }
@@ -24,5 +24,10 @@ public class VirtualToggle : VirtualButton
         OnToggleClick.RemoveAllListeners();
 
         OnToggleClick.AddListener(action);
+    }
+
+    public void SetToggleState(bool state)
+    {
+        toggleObj.SetActive(state);
     }
 }

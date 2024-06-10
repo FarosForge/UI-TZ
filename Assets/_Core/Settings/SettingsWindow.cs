@@ -10,8 +10,16 @@ public class SettingsWindow : Element
 
     private void Start()
     {
+        Deactivate();
+    }
+    
+    public void Init()
+    {
         soundsToggle.Init();
         musicToggle.Init();
+
+        soundsToggle.SetToggleState(!AudioManager.instance.IsSoundsMuted);
+        musicToggle.SetToggleState(!AudioManager.instance.IsMusicMuted);
 
         acceptButton.AddListener(() =>
         {
@@ -31,11 +39,6 @@ public class SettingsWindow : Element
             AudioManager.instance.MuteMusic();
         });
 
-        Deactivate();
-    }
-    
-    public void Init()
-    {
         Activate();
     }
 }

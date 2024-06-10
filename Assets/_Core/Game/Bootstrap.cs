@@ -5,14 +5,23 @@ using UnityEngine;
 public class Bootstrap : MonoBehaviour
 {
     [SerializeField] private VirtualButton nextButton;
+    
+    private SaveSystem saveSystem;
+    private AudioManager audioManager;
 
     private void Start()
     {
-        AudioManager.instance.PlayMusic();
+        saveSystem = SaveSystem.instance;
+        audioManager = AudioManager.instance;
+
+        saveSystem.Init();
+        audioManager.Init();
+
+        audioManager.PlayMusic();
 
         nextButton.AddListener(() =>
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.Config.ClickSound);
+            audioManager.PlaySound(audioManager.Config.ClickSound);
             SceneLoader.LoadScene(GameScenes.Main);
         });
     }

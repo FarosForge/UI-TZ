@@ -10,19 +10,27 @@ public class AudioManager : Singleton<AudioManager>
 
     public AudioConfig Config { get => config; }
 
-    private void Start()
+    public bool IsMusicMuted { get => musicSource.mute; }
+    public bool IsSoundsMuted { get => soundsSource.mute; }
+
+    public void Init()
     {
         DontDestroyOnLoad(this);
+
+        musicSource.mute = SaveSystem.instance.Data.musicMuted == 0 ? false : true;
+        soundsSource.mute = SaveSystem.instance.Data.soundsMuted == 0 ? false : true;
     }
 
     public void MuteMusic()
     {
         musicSource.mute = !musicSource.mute;
+        SaveSystem.instance.Save();
     }
 
     public void MuteSounds()
     {
         soundsSource.mute = !soundsSource.mute;
+        SaveSystem.instance.Save();
     }
 
     public void PlayMusic()
